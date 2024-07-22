@@ -7,13 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api" />
+        <module name="medical" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api" options="-parameters" />
+      <module name="medical" options="-parameters" />
     </option>
   </component>
 </project>
