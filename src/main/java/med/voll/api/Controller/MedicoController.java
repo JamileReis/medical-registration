@@ -2,9 +2,7 @@ package med.voll.api.Controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-
-import med.voll.api.Medico.*;
-
+import med.voll.api.Domain.Medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +29,6 @@ public class MedicoController {
 
         return  ResponseEntity.created(uri.toUri()).body(new DadosDetalhamentoMedico(medico));
     }
-    //código omitido
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
@@ -39,7 +36,6 @@ public class MedicoController {
         return ResponseEntity.ok(page);
     }
 
-    //código omitido
     @PutMapping
     @Transactional
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
