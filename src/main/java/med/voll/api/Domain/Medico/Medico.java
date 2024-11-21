@@ -1,11 +1,11 @@
-package med.voll.api.Medico;
+package med.voll.api.Domain.Medico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.Endereco.Endereco;
+import med.voll.api.Domain.Endereco.Endereco;
 
 
 @Table(name = "medicos")
@@ -29,7 +29,7 @@ public class Medico {
     private Especialidade especialidade;
 
     @Embedded
-    private med.voll.api.Endereco.Endereco endereco;
+    private Endereco endereco;
 
     private Boolean ativo;
 
