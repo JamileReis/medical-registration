@@ -1,4 +1,4 @@
-package med.voll.api.Endereco;
+package med.voll.api.Domain.Endereco;
 
 
 
