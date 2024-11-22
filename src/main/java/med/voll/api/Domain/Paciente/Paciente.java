@@ -1,4 +1,4 @@
-package med.voll.api.Paciente;
+package med.voll.api.Domain.Paciente;
 
 
 import jakarta.persistence.*;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.Endereco.Endereco;
+import med.voll.api.Domain.Endereco.Endereco;
 import org.springframework.data.annotation.Id;
 
 @Table(name = "pacientes")
