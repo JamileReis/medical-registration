@@ -30,13 +30,19 @@ public class SecurityFilter extends OncePerRequestFilter {
         if (tokenJWT != null) {
             var subject = tokenService.getSubject(tokenJWT);
             var usuario = repository.findByLogin(subject);
-            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+            System.out.println("o erro esta aqui!");
+            var authentication = new UsernamePasswordAuthenticationToken(usuario, tokenJWT, usuario.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             System.out.println("logado na requisição!");
+
+
         }
 
         filterChain.doFilter(request, response);
+
     }
 
     private String recuperarToken(HttpServletRequest request) {
