@@ -24,25 +24,31 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("chamando filtro");
-        var tokenJWT = recuperarToken(request);
+       try {
 
-        if (tokenJWT != null) {
-            var subject = tokenService.getSubject(tokenJWT);
-            var usuario = repository.findByLogin(subject);
-            System.out.println("o erro esta aqui!");
-            var authentication = new UsernamePasswordAuthenticationToken(usuario, tokenJWT, usuario.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+           var tokenJWT = recuperarToken(request);
+
+           if (tokenJWT != null) {
+               var subject = tokenService.getSubject(tokenJWT);
+               System.out.println(subject);
+               var usuario = repository.findByLogin(subject);
+               System.out.println(usuario.getAuthorities());
+               var authentication = new UsernamePasswordAuthenticationToken(usuario, tokenJWT, usuario.getAuthorities());
+               System.out.println(authentication);
+               SecurityContextHolder.getContext().setAuthentication(authentication);
 
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("logado na requisição!");
+               SecurityContextHolder.getContext().setAuthentication(authentication);
 
 
-        }
 
-        filterChain.doFilter(request, response);
+           }
 
+           filterChain.doFilter(request, response);
+       } catch (Exception e){
+           System.out.println(e.getMessage());
+
+       }
     }
 
     private String recuperarToken(HttpServletRequest request) {

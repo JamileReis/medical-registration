@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V4_alter_table_medicos_add_column_ativos.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V5_alter_table_paciente_add_ativo.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V6_create_table_usuarios.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V7_create_table_consultas.sql" dialect="MySQL" />
   </component>
 </project>
