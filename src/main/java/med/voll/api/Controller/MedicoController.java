@@ -1,5 +1,6 @@
 package med.voll.api.Controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.Domain.Medico.*;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 //CRUD
 @RestController
+@SecurityRequirement(name = "bearer-key")
 @RequestMapping("/medicos")
 public class MedicoController {
 
@@ -26,7 +28,6 @@ public class MedicoController {
         repository.save(medico);
 
         var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId());
-
         return  ResponseEntity.created(uri.toUri()).body(new DadosDetalhamentoMedico(medico));
     }
 
@@ -50,11 +51,13 @@ public class MedicoController {
         var medico = repository.getReferenceById(id);
         medico.excluir();
 
+
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}")
     public ResponseEntity detalhar(@PathVariable Long id) {
         var medico = repository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
+
     }
 }
