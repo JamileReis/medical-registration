@@ -1,6 +1,7 @@
 package med.voll.api.Controller;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.api.Domain.usuario.DadosAutenticacao;
 import med.voll.api.Domain.usuario.Usuario;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@SecurityRequirement(name = "bearer-key")
 @RequestMapping("/login")
 public class AutenticacaoController {
 
